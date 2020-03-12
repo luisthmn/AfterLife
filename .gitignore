@@ -1,2 +1,2 @@
-.vscode/
-*.mypy_cache/3.6
+.vscode
+.mypy_cache/

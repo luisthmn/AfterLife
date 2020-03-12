@@ -59,7 +59,9 @@ class Player:
             ghost = pygame.transform.scale(self.ghost, (self.scaleX, self.scaleY))
             if self.direccion == 1:
                 ghost = pygame.transform.flip(ghost, True, False)
-            self.imprimeCadaver(screen, 1, self.cadaverX, self.cadaverY)
+            
+            dead = pygame.transform.scale(self.dead, (self.scaleX, self.scaleY))
+            screen.blit(dead, (self.cadaverX, self.cadaverY))
             screen.blit(ghost, (self.playerX, self.playerY))
         
         elif sprite == "CAMINANDO":
@@ -150,10 +152,7 @@ class Player:
             if self.estado !="SUICIDIO" and self.estado!="FANTASMA":
                     self.estado = "PARADO"
 
-    def imprimeCadaver(self, screen, muerto, x, y):
-            if muerto:
-                dead = pygame.transform.scale(self.dead, (self.scaleX, self.scaleY))
-                screen.blit(dead, (x, y))
+                
 
 class Stage:
     #Imagenes utilizadas en los niveles
