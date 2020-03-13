@@ -1,6 +1,4 @@
 import pygame
-import playerFunc
-import stageFunc
 import time 
 
 bordeXp = 700
