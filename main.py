@@ -19,7 +19,9 @@ while running:
         #Terminate game when window is closed
         if event.type == pygame.QUIT:
                 running = False
+                
     #Game Graphics     
     stage.pintarFondo(stage.fondos, screen)
     player.pintarJugador(player.estado, screen)  
+    player.HUD(screen)
     pygame.display.update()

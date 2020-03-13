@@ -152,6 +152,8 @@ class Player:
             if self.estado !="SUICIDIO" and self.estado!="FANTASMA":
                     self.estado = "PARADO"
 
+    def HUD(self, screen):
+        return 0
                 
 
 class Stage:
@@ -168,9 +170,9 @@ class Stage:
     numObst = 3
 
     #Coordenadas de los items
-    pentagramas = 0
-    balas = 0
-    obstaculos = 0
+    pentagramas = []
+    balas =     []
+    obstaculos = []
 
     #Dimensiones del nivel 
     stageX = 800
@@ -186,9 +188,6 @@ class Stage:
         screen.blit(fondo, (0, 0))
 
     def pintarItems(self):
-        return 0
-
-    def pintarCadaver(self):
         return 0
 
     def ganar(self, player):
