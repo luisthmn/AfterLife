@@ -1,6 +1,2 @@
 import game
-
 game.AfterLife()
-
-
-
