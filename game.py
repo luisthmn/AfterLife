@@ -11,7 +11,8 @@ def AfterLife():
     #Main game loop
     running = True
     while running:                                
-    
+        
+        #Event listener loop
         for event in pygame.event.get():
             #Game controls
             player.movimientos(event, stage)

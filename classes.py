@@ -169,8 +169,7 @@ class Player:
                             if self.direccion == 1:
                                 suicide = pygame.transform.flip(suicide, True, False)
                             screen.blit(suicide, (self.playerX, self.playerY))
-
-                            self.num_balas -=1
+                            self.num_balas  -= 1
                             self.estado = "MUERTO"
                             if self.pose >=120:
                                 self.pose = 0
@@ -192,9 +191,9 @@ class Player:
 
                 if (self.balaX >= window.windowX or  self.balaX <= 0 or self.balaY >= window.windowY or  self.balaY <= 0):
                     self.shoot = False
-                    self.num_balas -= 1
                     self.balaX = self.playerX + 25
                     self.balaY = self.playerY + 55
+
 
         """
             Esta funcion regula las animaciones y acciones del jugador en base a las entradas de teclado y mouse introducidad
@@ -213,6 +212,14 @@ class Player:
                     self.playerX = self.cadaverX
                     self.playerY = self.cadaverY
                 self.pose = 0
+
+            #En caso de que el jugador esté vivo y se haya parado sobre una recarga de munición aumentamos sus balas
+          if self.playerX in  range (stage.ubicacion[0]-30, stage.ubicacion[0]+45) and self.playerY in range(stage.ubicacion[1]-120, stage.ubicacion[1]+40) and self.estado != "FANTASMA":
+                self.num_balas += 5
+                if stage.ubicacion == stage.ubicaciones_balas[0]:
+                    stage.ubicacion = stage.ubicaciones_balas[1]
+                else:
+                    stage.ubicacion = stage.ubicaciones_balas[0]
         
          #Este condicional es accedido siempre que se haya pulsado una tecla
           if event.type == pygame.KEYDOWN:
@@ -255,6 +262,7 @@ class Player:
             
             #Jugador dispara
             if event.key == pygame.K_q:
+
                 if (self.estado == "CAMINANDO" or self.estado == "PARADO") and self.num_balas > 0:   
                     self.estado = "DISPARANDO"
                     self.balaX = self.playerX + 25
@@ -266,6 +274,9 @@ class Player:
           elif  event.type == pygame.KEYUP:
             if self.estado !="SUICIDIO" and self.estado!="FANTASMA":
                     self.estado = "PARADO"
+            if self.shoot and self.num_balas > 0:
+                    self.num_balas -= 1
+         
 
     """
             Esta funcion muestra el HUD con los datos del jugador en la pantalla
@@ -286,8 +297,12 @@ class Stage:
 
     def __init__(self):
         #Coordenadas del pentagrama en el nivel
-        self.pentaX = 32
+        self.pentaX = 60
         self.pentaY = 300
+
+        #Coordenadas de las recargas de municion que hay en el nivel
+        self.ubicaciones_balas = [(600,300),(600,100)]
+        self.ubicacion = self.ubicaciones_balas[0]
 
         #Imagenes que utilizamos para armar el nivel 
         self.fondos = pygame.image.load("backgrounds/fondo.png")
@@ -295,18 +310,51 @@ class Stage:
         self.pentagrama = pygame.transform.scale(self.pentagrama, (150, 100))
         self.bala = pygame.image.load("items/bullet.png")
         self.bala = pygame.transform.scale(self.bala, (20, 40))
+        self.bala = pygame.transform.rotate(self.bala, -45)
         self.pistola = pygame.image.load("items/gun.png")
         self.fuego = pygame.image.load("items/fuego.png")
         self.fuego = pygame.transform.scale(self.fuego, (100, 100))
+        self.canon = pygame.image.load("backgrounds/canon.png")
+        self.hoyo = pygame.image.load("backgrounds/hoyo.png")
+        self.lava = pygame.image.load("backgrounds/lava.png")
+        self.pedestal = pygame.image.load("backgrounds/pedestal.png")
+        
 
+    """
+            Esta funcion pinta el fondo del nivel
+            fondo =         imagen que se usará de fondo
+            screen =        Ventana en la que está corriendo el juego
+    """
     def pintarFondo(self, fondo, screen):
         fondo = pygame.image.load("backgrounds/fondo.png")
         fondo = pygame.transform.scale(fondo, (window.windowX, window.windowY))
         screen.blit(fondo, (0, 0))
         self.pintarItems(screen)
+        self.pintarObstaculos(screen)
 
+    """
+        Esta funcion pinta los obstaculos del nivel
+        screen =        Ventana en la que está corriendo el juego
+    """
+    def pintarObstaculos(self, screen):
+        canon = pygame.transform.scale(self.canon, (100, 100))
+        hoyo = pygame.transform.scale(self.hoyo, (100, 100))
+        lava = pygame.transform.scale(self.lava, (100, 100))
+        pedestal = pygame.transform.scale(self.pedestal, (100, 100))
+
+        #screen.blit(canon, (400,400))
+        #screen.blit(hoyo, (400,600))
+        #screen.blit(lava, (400,50))
+        #screen.blit(pedestal, (200,100))
+
+    """
+            Esta funcion pinta los items del nivel
+            screen =        Ventana en la que está corriendo el juego
+    """
     def pintarItems(self, screen):
         screen.blit(self.pentagrama, (self.pentaX, self.pentaY))
+        screen.blit(self.bala, (self.ubicacion))
+
 
 
 
