@@ -13,8 +13,8 @@ class Player:
         self.cadaverY = 1000
 
         #Dimensiones del sprite del jugador
-        self.scaleX = 80
-        self.scaleY = 130
+        self.scaleX = 60
+        self.scaleY = 110
 
         #Numero de balas que tiene el jugador
         self.num_balas = 3
@@ -94,7 +94,7 @@ class Player:
             dead = pygame.transform.scale(self.dead, (self.scaleX, self.scaleY))
             screen.blit(dead, (self.cadaverX, self.cadaverY))
 
-            if self.playerX in  range (stage.pentaX-30, stage.pentaX+45) and self.playerY in range(stage.pentaY-64, stage.pentaY+40):
+            if self.playerX in  range (stage.pentaX-30, stage.pentaX+60) and self.playerY in range(stage.pentaY-64, stage.pentaY+40):
                     screen.blit(stage.fuego, (stage.pentaX+25, stage.pentaY-20))
             else:
                 ghost = pygame.transform.scale(self.ghost, (self.scaleX, self.scaleY))
@@ -171,7 +171,7 @@ class Player:
                             screen.blit(suicide, (self.playerX, self.playerY))
                             self.num_balas  -= 1
                             self.estado = "MUERTO"
-                            if self.pose >=120:
+                            if self.pose >=70:
                                 self.pose = 0
 
         #En caso de que el usuario haya disparado trazamos la trayectoria del disparo
@@ -203,7 +203,7 @@ class Player:
         """
     def movimientos(self, event, stage):
         #En caso de que el jugador sea un fantasma y se haya parado en el centro de un pentagrama, revivimos su cadaver
-          if self.playerX in  range (stage.pentaX-30, stage.pentaX+45) and self.playerY in range(stage.pentaY-64, stage.pentaY+40) and self.estado == "FANTASMA":
+          if self.playerX in  range (stage.pentaX-30, stage.pentaX+60) and self.playerY in range(stage.pentaY-64, stage.pentaY+40) and self.estado == "FANTASMA":
                 self.pose = 0
                 while self.pose <=10000000:
                     self.pose+=1
@@ -214,7 +214,7 @@ class Player:
                 self.pose = 0
 
             #En caso de que el jugador esté vivo y se haya parado sobre una recarga de munición aumentamos sus balas
-          if self.playerX in  range (stage.ubicacion[0]-30, stage.ubicacion[0]+45) and self.playerY in range(stage.ubicacion[1]-120, stage.ubicacion[1]+40) and self.estado != "FANTASMA":
+          if self.playerX in  range (stage.ubicacion[0]-50, stage.ubicacion[0]+45) and self.playerY in range(stage.ubicacion[1]-120, stage.ubicacion[1]+40):
                 self.num_balas += 5
                 if stage.ubicacion == stage.ubicaciones_balas[0]:
                     stage.ubicacion = stage.ubicaciones_balas[1]
@@ -301,23 +301,22 @@ class Stage:
         self.pentaY = 300
 
         #Coordenadas de las recargas de municion que hay en el nivel
-        self.ubicaciones_balas = [(600,300),(600,100)]
+        self.ubicaciones_balas = [(600,300),(710,100)]
         self.ubicacion = self.ubicaciones_balas[0]
+
+        #Ubicaciones de hoyos que hay en el nivel
+        self.hoyos = [(300, 40), (300, 600), (500, 500), (700, 300)]
 
         #Imagenes que utilizamos para armar el nivel 
         self.fondos = pygame.image.load("backgrounds/fondo.png")
-        self.pentagrama = pygame.image.load("items/penta.png")
-        self.pentagrama = pygame.transform.scale(self.pentagrama, (150, 100))
-        self.bala = pygame.image.load("items/bullet.png")
-        self.bala = pygame.transform.scale(self.bala, (20, 40))
+        self.pentagrama = pygame.transform.scale(pygame.image.load("items/penta.png"), (150, 100))
+        self.bala = pygame.transform.scale( pygame.image.load("items/bullet.png"), (20, 40))
         self.bala = pygame.transform.rotate(self.bala, -45)
-        self.pistola = pygame.image.load("items/gun.png")
-        self.fuego = pygame.image.load("items/fuego.png")
-        self.fuego = pygame.transform.scale(self.fuego, (100, 100))
-        self.canon = pygame.image.load("backgrounds/canon.png")
-        self.hoyo = pygame.image.load("backgrounds/hoyo.png")
-        self.lava = pygame.image.load("backgrounds/lava.png")
-        self.pedestal = pygame.image.load("backgrounds/pedestal.png")
+        self.fuego = pygame.transform.scale(pygame.image.load("items/fuego.png"), (100, 100))
+        self.canon = pygame.transform.scale(pygame.image.load("backgrounds/canon.png"), (130,65))
+        self.hoyo = pygame.transform.scale(pygame.image.load("backgrounds/hoyo.png"), (55,55))
+        self.lava = pygame.transform.scale(pygame.image.load("backgrounds/lava.png"), (130,50))
+        self.pedestal = pygame.transform.scale(pygame.image.load("backgrounds/pedestal.png"), (240, 170))
         
 
     """
@@ -329,31 +328,37 @@ class Stage:
         fondo = pygame.image.load("backgrounds/fondo.png")
         fondo = pygame.transform.scale(fondo, (window.windowX, window.windowY))
         screen.blit(fondo, (0, 0))
-        self.pintarItems(screen)
         self.pintarObstaculos(screen)
-
-    """
-        Esta funcion pinta los obstaculos del nivel
-        screen =        Ventana en la que está corriendo el juego
-    """
-    def pintarObstaculos(self, screen):
-        canon = pygame.transform.scale(self.canon, (100, 100))
-        hoyo = pygame.transform.scale(self.hoyo, (100, 100))
-        lava = pygame.transform.scale(self.lava, (100, 100))
-        pedestal = pygame.transform.scale(self.pedestal, (100, 100))
-
-        #screen.blit(canon, (400,400))
-        #screen.blit(hoyo, (400,600))
-        #screen.blit(lava, (400,50))
-        #screen.blit(pedestal, (200,100))
+        self.pintarItems(screen)
 
     """
             Esta funcion pinta los items del nivel
             screen =        Ventana en la que está corriendo el juego
     """
     def pintarItems(self, screen):
+        screen.blit(self.pedestal,(self.pentaX-45, self.pentaY-25))
         screen.blit(self.pentagrama, (self.pentaX, self.pentaY))
         screen.blit(self.bala, (self.ubicacion))
+
+    """
+        Esta funcion pinta los obstaculos del nivel
+        screen =        Ventana en la que está corriendo el juego
+    """
+    def pintarObstaculos(self, screen):
+        #Lava del nivel
+        screen.blit(self.lava, (640, 30))
+        screen.blit(pygame.transform.rotate(self.lava, 90), (635, 80))
+        screen.blit(pygame.transform.rotate(self.lava, 180), (640, 160))
+
+        #Cañones del nivel
+        screen.blit(self.canon, (30,440))
+        screen.blit(self.canon, (130,440))
+        screen.blit(self.canon, (30,220))
+        screen.blit(self.canon, (130,220))
+
+        #Hoyos del nivel
+        for x in self.hoyos:
+            screen.blit(self.hoyo, x)
 
 
 
