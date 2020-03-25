@@ -304,9 +304,6 @@ class Stage:
         self.ubicaciones_balas = [(600,300),(710,100)]
         self.ubicacion = self.ubicaciones_balas[0]
 
-        #Ubicaciones de hoyos que hay en el nivel
-        self.hoyos = [(300, 40), (300, 600), (500, 500), (700, 300)]
-
         #Imagenes que utilizamos para armar el nivel 
         self.fondos = pygame.image.load("backgrounds/fondo.png")
         self.pentagrama = pygame.transform.scale(pygame.image.load("items/penta.png"), (150, 100))
@@ -355,10 +352,6 @@ class Stage:
         screen.blit(self.canon, (130,440))
         screen.blit(self.canon, (30,220))
         screen.blit(self.canon, (130,220))
-
-        #Hoyos del nivel
-        for x in self.hoyos:
-            screen.blit(self.hoyo, x)
 
 
 
