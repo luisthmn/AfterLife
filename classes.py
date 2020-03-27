@@ -228,8 +228,15 @@ class Player:
                 if self.estado != "FANTASMA":
                     self.estado = "CAMINANDO"
                 self.direccion = 0
-                if self.playerX >= 0:
-                    self.playerX -=self.velocidad
+                if self.playerX >= 0 :
+                     ###############################3
+                    if self.estado == "FANTASMA":
+                        self.playerX -= self.velocidad
+
+                    elif ((self.playerY in stage.fronterasLavaY and self.playerX-5 not in stage.fronterasLavaX) or self.playerY not in stage.fronterasLavaY) :
+                        if ((self.playerY in stage.fronterasHoyoY and self.playerX-5 not in stage.fronterasHoyoX) or self.playerY not in stage.fronterasHoyoY) :
+                            self.playerX -=self.velocidad
+
 
             #Desplazamiento a la derecha
             if event.key == pygame.K_RIGHT or event.key == pygame.K_d:
@@ -237,7 +244,14 @@ class Player:
                     self.estado = "CAMINANDO"
                 self.direccion = 1
                 if(self.playerX <=window.windowX-80):
-                    self.playerX +=self.velocidad
+                     ###############################3
+                    if self.estado == "FANTASMA":
+                        self.playerX += self.velocidad
+
+                    elif ((self.playerY in stage.fronterasLavaY and self.playerX+5 not in stage.fronterasLavaX)  or self.playerY not in stage.fronterasLavaY):
+                        if ((self.playerY in stage.fronterasHoyoY and self.playerX+5 not in stage.fronterasHoyoX) or self.playerY not in stage.fronterasHoyoY) :
+                            self.playerX +=self.velocidad
+
 
             #Desplazamiento hacia arriba
             if event.key == pygame.K_UP or event.key == pygame.K_w:
@@ -245,7 +259,13 @@ class Player:
                     self.estado = "CAMINANDO"
                 self.direccion = 2
                 if self.playerY >= 0:
-                    self.playerY -=self.velocidad
+                     ###############################3
+                    if self.estado == "FANTASMA":
+                        self.playerY -= self.velocidad
+
+                    elif ((self.playerX in stage.fronterasLavaX and self.playerY-5 not in stage.fronterasLavaY) or self.playerX not in stage.fronterasLavaX):
+                        if ((self.playerX in stage.fronterasHoyoX and self.playerY-5 not in stage.fronterasHoyoY) or self.playerX not in stage.fronterasHoyoX) :
+                            self.playerY -=self.velocidad
             
             #Desplazamiento hacia abajo
             if event.key == pygame.K_DOWN or event.key == pygame.K_s:
@@ -253,7 +273,14 @@ class Player:
                     self.estado = "CAMINANDO"
                 self.direccion = 3
                 if self.playerY <= window.windowY-130:
-                    self.playerY +=self.velocidad
+                    ###############################3
+                    if self.estado == "FANTASMA":
+                        self.playerY += self.velocidad
+
+                    elif (self.playerX in stage.fronterasLavaX and self.playerY+5 not in stage.fronterasLavaY) or self.playerX not in stage.fronterasLavaX:
+                        if ((self.playerX in stage.fronterasHoyoX and self.playerY+5 not in stage.fronterasHoyoY) or self.playerX not in stage.fronterasHoyoX) :
+                            self.playerY +=self.velocidad   
+
             
             #Suicidio del jugador
             if event.key == pygame.K_SPACE:
@@ -303,6 +330,24 @@ class Stage:
         #Coordenadas de las recargas de municion que hay en el nivel
         self.ubicaciones_balas = [(600,300),(710,100)]
         self.ubicacion = self.ubicaciones_balas[0]
+
+        #Fronteras del nivel (Zonas no accesibles)
+        self.fronterasLavaX = []
+        self.fronterasLavaY = []
+        self.fronterasHoyoX = []
+        self.fronterasHoyoY = []
+        #Definimos fronteras de la lava
+        for x in range(600,800):
+            self.fronterasLavaX.append(x)
+        for y in range(-100,140):
+            self.fronterasLavaY.append(y)
+        #Definimos las fronteras de los cañones:
+        for x in range(-20,250):
+            self.fronterasHoyoX.append(x)
+        for y in range(340,420):
+            self.fronterasHoyoY.append(y)
+        for y in range(120,220):
+            self.fronterasHoyoY.append(y)
 
         #Imagenes que utilizamos para armar el nivel 
         self.fondos = pygame.image.load("backgrounds/fondo.png")
