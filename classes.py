@@ -399,6 +399,15 @@ class Stage:
         screen.blit(self.canon, (130,220))
 
 
+class Enemy:
+    def __init__(self):
+
+        self.scaleX = 60
+        self.scaleY = 110
+
+
+        self.playerX = 500
+        self.playerY = 300
 
 
 
