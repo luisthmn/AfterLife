@@ -2,26 +2,37 @@ import pygame
 import classes
 import window
 
+
 def AfterLife():
 
-    #Screen setup
+    # Screen setup
     screen = window.setWindow()
-    player = classes.Player()  
+    player = classes.Player()
     stage = classes.Stage()
-    #Main game loop
+    enemy = classes.Enemy()
+
+    # Screen update rate
+    clock = pygame.time.Clock()
+
+    # Main game loop
     running = True
-    while running:                                
-        
-        #Event listener loop
+    while running:
+        # Screen update rate
+        clock.tick(60)
+
+        # Event listener loop
         for event in pygame.event.get():
-            #Game controls
+            # Game controls
             player.movimientos(event, stage)
-            #Terminate game when window is closed
+            # Terminate game when window is closed
             if event.type == pygame.QUIT:
-                    running = False
-                    
-        #Game Graphics     
+                running = False
+
+        # Game Graphics
         stage.pintarFondo(stage.fondos, screen)
-        player.pintarJugador(player.estado, screen, stage)  
-        player.HUD(screen, stage)
+        enemy.spawn(stage, player)
+        enemy.pintarEnemigo(screen, stage, player)
+        player.pintarJugador(player.estado, screen, stage)
+        enemy.move(screen, stage, player)
+        player.HUD(screen, stage, enemy)
         pygame.display.update()
