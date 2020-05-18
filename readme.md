@@ -3,7 +3,7 @@ gracias por checar este repositorio, este proyecto es un juego simple y de muy b
 
 ## AFTERLIFE
 
-En caso de que pruebes el juego, lo siento mucho por cualquier ofensa que la pobre calidad cause en ti, y si, sé que los dibujos parecen hechos por un niño, tal vez luego los cambie idk ya les agarré cariño la verdad. La música y sonidos del juego fueron hechos con beepbox, los sprites fueron hechos con pixilArt
+En caso de que pruebes el juego, lo siento mucho por cualquier ofensa que la pobre calidad cause en ti, los dibujos parecen hechos por un niño, tal vez luego los cambie idk ya les agarré cariño la verdad. La música y sonidos del juego fueron hechos con beepbox, los sprites fueron hechos con pixilArt
 
 **Online tools used**
 
@@ -32,7 +32,7 @@ https://www.zapsplat.com/music/horror-zombie-male-groan-1/
 http://soundbible.com/1037-Zombie-Come-Here.html
 
 ## Introducción 
-El juego consiste en derrotar a una cantidad determinada de zombies usando tu pistola, así de cliché como suena, sin embargo eso no es todo, a lo largo de tu batalla necesitarás encontrar más balas para tu arma, ya que tienes una cantidad finita de ellas, en algunas situaciones estas balas estarán en lugares inaccesibles, ahí es donde entra una mecánica especial de este juego.
+El juego consiste en derrotar a una cantidad determinada de zombies usando tu pistola, pero eso no es todo, a lo largo de tu batalla necesitarás encontrar más balas para tu arma, ya que tienes una cantidad finita de ellas, en algunas situaciones estas balas estarán en lugares inaccesibles, ahí es donde entra una mecánica especial de este juego.
 
 En caso de que no puedas alcanzar un item con tu cuerpo físico, puedes usar una de tus balas para {REDACTED} y de esa forma abandonar tu cuerpo físico, transformandote en un fantasma caricaturesco.
 
