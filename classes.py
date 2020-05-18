@@ -69,7 +69,7 @@ class Player:
         self.direccionBala = self.direccion
 
         # Numero de enemigos que el jugador necesita eliminar para ganar
-        self.winGoal = 1
+        self.winGoal = 100
         # Numero de enemigos eliminados del jugador
         self.killed = 0
 
