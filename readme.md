@@ -31,16 +31,16 @@ https://www.zapsplat.com/music/horror-zombie-male-groan-10/
 https://www.zapsplat.com/music/horror-zombie-male-groan-1/
 http://soundbible.com/1037-Zombie-Come-Here.html
 
-#Introducción 
+## Introducción 
 El juego consiste en derrotar a una cantidad determinada de zombies usando tu pistola, así de cliché como suena, sin embargo eso no es todo, a lo largo de tu batalla necesitarás encontrar más balas para tu arma, ya que tienes una cantidad finita de ellas, en algunas situaciones estas balas estarán en lugares inaccesibles, ahí es donde entra una mecánica especial de este juego.
 
-En caso de que no puedas alcanzar un item con tu cuerpo físico, puedes usar una de tus balas para {REDACTED} y de esa forma abandonar tu cuerpo físico, transformandote en un muy caricaturesco fantasma.
+En caso de que no puedas alcanzar un item con tu cuerpo físico, puedes usar una de tus balas para {REDACTED} y de esa forma abandonar tu cuerpo físico, transformandote en un fantasma caricaturesco.
 
-Cuando eres un fantasma puedes moverte con mucha facilidad a través de obstaculos que de otra forma no podrías atravesar y hasta puedes tocar a los zombies sin sufrir ningun daño, pero no todo es tan bien como suena, los zombies (son zombies demonios por cierto, AKA "Zombie demons" or "Zemons") no son muy observadores en cuanto al plano metafísico, pero recuerda que tu cuerpo sigue ahí tirado en donde lo dejaste, y los zombies van a tomar eso en cuenta, en otras palabras, no estés mucho tiempo en tu forma de fantasma o tu cuerpo será devorado sin que puedas hacer nada para evitarlo, para volver a tu cuerpo físico intentar colocar tu forma fantasmal sobre el pentagrama que se encuentra sobre el pedestal en el nivel, cualquier cosa que sea rojo brillante y que se encuentre sobre un pedestal debe de ser importante.
+Cuando eres un fantasma puedes moverte con mucha facilidad a través de obstaculos que de otra forma no podrías atravesar y hasta puedes tocar a los zombies sin sufrir ningun daño, pero no todo es tan bien como suena, los zombies (son zombies demonios por cierto, AKA "Zombie demons" or "Zemons") no son muy observadores en cuanto al plano metafísico, pero recuerda que tu cuerpo sigue ahí tirado en donde lo dejaste, y los zombies van a tomar eso en cuenta, en otras palabras, no estés mucho tiempo en tu forma de fantasma o tu cuerpo será devorado sin que puedas hacer nada para evitarlo, para volver a tu cuerpo físico colocate sobre el pentagrama que se encuentra sobre el pedestal en el nivel.
 
-#Requisitos:
+# Requisitos:
 
-Correr el juego es muy fácil, lo único que necesitas es tener instalado **python3.x** y **pygame** en su versión 1.6 o superior, **pygame** se puede instalar corriendo el siguiente comando en la terminal:
+Lo único que necesitas para correr el juego es tener instalado **python3.x** y **pygame** en su versión 1.6 o superior, **pygame** se puede instalar corriendo el siguiente comando en la terminal:
 	
 	pip install pygame
 
