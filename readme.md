@@ -46,7 +46,7 @@ Lo único que necesitas para correr el juego es tener instalado **python3.x** y 
 
 
 
-**Controles del juego **
+**Controles del juego**
 
 	
 * Las **flechas direccionales** o **WASD** pueden usarse para el movimiento del personaje
