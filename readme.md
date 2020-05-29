@@ -36,7 +36,7 @@ El juego consiste en derrotar a una cantidad determinada de zombies usando tu pi
 
 En caso de que no puedas alcanzar un item con tu cuerpo físico, puedes usar una de tus balas para {REDACTED} y de esa forma abandonar tu cuerpo físico, transformandote en un fantasma caricaturesco.
 
-Cuando eres un fantasma puedes moverte con mucha facilidad a través de obstaculos que de otra forma no podrías atravesar y hasta puedes tocar a los zombies sin sufrir ningun daño, pero no todo es tan bien como suena, los zombies (son zombies demonios por cierto, AKA "Zombie demons" or "Zemons") no son muy observadores en cuanto al plano metafísico, pero recuerda que tu cuerpo sigue ahí tirado en donde lo dejaste, y los zombies van a tomar eso en cuenta, en otras palabras, no estés mucho tiempo en tu forma de fantasma o tu cuerpo será devorado sin que puedas hacer nada para evitarlo, para volver a tu cuerpo físico colocate sobre el pentagrama que se encuentra sobre el pedestal en el nivel.
+Cuando eres un fantasma puedes moverte con mucha facilidad a través de obstaculos que de otra forma no podrías atravesar y hasta puedes tocar a los zombies sin sufrir ningun daño, pero no todo es tan bien como suena, no estés mucho tiempo en tu forma de fantasma o tu cuerpo será devorado sin que puedas hacer nada para evitarlo, para volver a tu cuerpo físico colocate sobre el pentagrama que se encuentra sobre el pedestal en el nivel.
 
 # Requisitos:
 
